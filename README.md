@@ -13,6 +13,10 @@ description : http://martinfowler.com/bliki/MemoryImage.html
 > grails
 > run-app
 
+# research needed
+
+http://martinfowler.com/articles/consumerDrivenContracts.html
+
 # usable links
  * http://www.groovy-lang.org/
  * http://grails.github.io/grails-doc/latest/guide/single.html
