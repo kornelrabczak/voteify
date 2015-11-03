@@ -6,6 +6,7 @@ grails + maybe angularjs
 
 # storage
 Prevayler based persistence - https://github.com/airomem/airomem
+
 description : http://martinfowler.com/bliki/MemoryImage.html
 
 # build & run
