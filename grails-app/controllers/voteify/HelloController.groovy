@@ -8,12 +8,19 @@ class HelloController {
     VoteService voteService
 
     def index() {
-        def method = voteService.serviceMethod()
-        [something: "Hello world! \n" + method]
+        [something: "Hello world! \n"]
     }
 
     def asJson() {
-        def method = voteService.serviceMethod()
+        def method = voteService.getAllVotes()
         render method as JSON
+    }
+
+    def create() {
+        voteService.createVote("test", [1, 2, 3, 4] as LinkedList)
+    }
+
+    def remove() {
+        [something: "todo remote! \n"]
     }
 }

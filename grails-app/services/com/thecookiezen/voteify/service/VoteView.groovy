@@ -4,5 +4,6 @@ import com.thecookiezen.domain.Vote
 
 interface VoteView {
     List<Vote> getVotes()
-    void addVote(String author, LinkedList options)
+    void addVote(Vote vote)
+    void removeVote(String id)
 }
