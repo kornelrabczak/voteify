@@ -1,6 +1,7 @@
-package com.thecookiezen.voteify.service
+package com.thecookiezen.control
 
-import com.thecookiezen.domain.Vote
+import com.thecookiezen.entity.Vote
+import com.thecookiezen.boundary.VoteView
 import pl.setblack.airomem.core.WriteChecker
 
 import java.util.concurrent.CopyOnWriteArrayList
@@ -28,5 +29,10 @@ class VotesStorage implements VoteView, Serializable {
     def void removeVote(String id) {
         def found = votes.find { it -> it.id == id }
         votes.remove(found)
+    }
+
+    @Override
+    Vote getVote(String id) {
+        return null
     }
 }

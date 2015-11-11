@@ -1,4 +1,4 @@
-package com.thecookiezen.domain
+package com.thecookiezen.entity
 
 import java.time.LocalDateTime
 

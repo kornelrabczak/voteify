@@ -1,5 +1,7 @@
-package com.thecookiezen.voteify.service
+package com.thecookiezen.control.command
 
+import com.thecookiezen.boundary.VoteView
+import com.thecookiezen.control.VotesStorage
 import pl.setblack.airomem.core.VoidCommand
 import pl.setblack.airomem.data.DataRoot
 

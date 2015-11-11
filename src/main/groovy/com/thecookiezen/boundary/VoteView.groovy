@@ -1,9 +1,11 @@
-package com.thecookiezen.voteify.service
+package com.thecookiezen.boundary
 
-import com.thecookiezen.domain.Vote
+import com.thecookiezen.entity.Vote
 
 interface VoteView {
     List<Vote> getVotes()
     void addVote(Vote vote)
     void removeVote(String id)
+
+    Vote getVote(String id)
 }

@@ -1,5 +1,10 @@
 package com.thecookiezen.voteify.service
 
+import com.thecookiezen.boundary.VoteView
+import com.thecookiezen.control.command.VoteCreateCommand
+import com.thecookiezen.control.command.VoteRemoveCommand
+import com.thecookiezen.control.VotesStorage
+import com.thecookiezen.entity.Vote
 import grails.transaction.Transactional
 import pl.setblack.airomem.core.PersistenceController
 import pl.setblack.airomem.core.builders.PersistenceFactory
@@ -20,7 +25,7 @@ class VoteService {
 
     def createVote(String author, LinkedList options) {
         def command = new VoteCreateCommand(author: author, options: options)
-        controller.execute(command)
+        controller.executeAndQuery(command)
     }
 
     def removeVote(String id) {
@@ -30,5 +35,9 @@ class VoteService {
 
     def getAllVotes() {
         controller.query({ view -> view.getVotes() })
+    }
+
+    def Vote getById(Serializable id) {
+        controller.query({ view -> view.getVote(id as String) })
     }
 }
