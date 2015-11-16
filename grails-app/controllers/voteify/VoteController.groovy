@@ -3,14 +3,15 @@ package voteify
 import com.thecookiezen.entity.Vote
 import com.thecookiezen.voteify.service.VoteService
 import grails.rest.RestfulController
+import org.springframework.http.HttpStatus
 
-import static org.springframework.http.HttpStatus.CREATED
-import static org.springframework.http.HttpStatus.NO_CONTENT
+import static org.springframework.http.HttpStatus.*
 
 class VoteController extends RestfulController {
 
     VoteService voteService
 
+    static allowedMethods = [index: "GET", save: "POST", update: "PUT", delete: "DELETE"]
     static responseFormats = ['json']
 
     VoteController() {
@@ -22,27 +23,25 @@ class VoteController extends RestfulController {
         respond voteService.getAllVotes()
     }
 
-    @Override
-    def save() {
-        def instance = voteService.createVote(params.author as String, params.options as LinkedList)
-        respond instance, [status: CREATED]
+    def save(Vote vote) {
+        def instance = voteService.createVote(vote.author, vote.options)
+        respond status: CREATED, instance
     }
 
     @Override
     def delete() {
         def instance = queryForResource(params.id as String)
         if (instance == null) {
-            notFound()
-            return
+            respond status: NOT_FOUND
         }
 
         voteService.removeVote(instance.id)
-        render status: NO_CONTENT
+        respond status: GONE
     }
-
 
     @Override
     protected Vote queryForResource(Serializable id) {
-        respond voteService.getById(id)
+        println id
+        voteService.getById(id)
     }
 }

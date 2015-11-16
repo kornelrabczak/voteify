@@ -27,12 +27,12 @@ class VotesStorage implements VoteView, Serializable {
 
     @Override
     def void removeVote(String id) {
-        def found = votes.find { it -> it.id == id }
+        def found = getVote(id)
         votes.remove(found)
     }
 
     @Override
     Vote getVote(String id) {
-        return null
+        votes.find { it -> it.id == id }
     }
 }
